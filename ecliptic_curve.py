@@ -42,7 +42,7 @@ def is_ecliptic_curve(A:int,B:int,p:int):
         return True
 
 
-#czy punkt należy do krzywej eliptycznej
+#czy punkt nalezy do krzywej eliptycznej
 def is_this_point_on_ecliptic_curve(x:int,y:int,A:int,B:int,p:int,adnotations=True):
     if(adnotations):
         print("P(" + str(x) + "," + str(y) + ")\n")
