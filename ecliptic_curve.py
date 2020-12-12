@@ -23,17 +23,17 @@ def extended_euklides(a, b):
 
 
 
-def ecliptic_curve(x:int,A:int,B:int,p:int):
+def elliptic_curve(x:int,A:int,B:int,p:int):
     return ((x**3)%p+(A*x)%p+B%p)%p
 
-def delta_of_ecliptic_curve(A:int,B:int,p:int):
+def delta_of_elliptic_curve(A:int,B:int,p:int):
     return (4*(A**3)+27*(B**2))%p
 
 
 
 
 #czy rownanie jest krzywa eliptyczna
-def is_ecliptic_curve(A:int,B:int,p:int):
+def is_elliptic_curve(A:int,B:int,p:int):
     summary=delta_of_ecliptic_curve(A,B,p)
     print("[4 * (" + str(A) + "^3) + 27 * (" + str(B) + "^2)] mod " + str(p) + " = " + str(summary))
     if(summary==0):
@@ -43,7 +43,7 @@ def is_ecliptic_curve(A:int,B:int,p:int):
 
 
 #czy punkt nalezy do krzywej eliptycznej
-def is_this_point_on_ecliptic_curve(x:int,y:int,A:int,B:int,p:int,adnotations=True):
+def is_this_point_on_elliptic_curve(x:int,y:int,A:int,B:int,p:int,adnotations=True):
     if(adnotations):
         print("P(" + str(x) + "," + str(y) + ")\n")
     y=y%p
@@ -58,19 +58,19 @@ def is_this_point_on_ecliptic_curve(x:int,y:int,A:int,B:int,p:int,adnotations=Tr
         return False
 
 #dodawanie punktow na krzywej eliptycznej
-def add_points_on_eliptic_curve(x1:int,y1:int,x2:int,y2:int,A:int,B:int,p:int,adnotations=True):
+def add_points_on_elliptic_curve(x1:int,y1:int,x2:int,y2:int,A:int,B:int,p:int,adnotations=True):
     
-    if(is_this_point_on_ecliptic_curve(x1,y1,A,B,p,False)):
+    if(is_this_point_on_elliptic_curve(x1,y1,A,B,p,False)):
         if(adnotations):
-            print("P = (" + str(x1) + ", " + str(y1) + ") is on eliptic curve")
+            print("P = (" + str(x1) + ", " + str(y1) + ") is on elliptic curve")
     else:
-        print("!!! P = (" + str(x1) + ", " + str(y1) + ") isn't on eliptic curve")
+        print("!!! P = (" + str(x1) + ", " + str(y1) + ") isn't on elliptic curve")
         
-    if(is_this_point_on_ecliptic_curve(x2,y2,A,B,p,False)):
+    if(is_this_point_on_elliptic_curve(x2,y2,A,B,p,False)):
         if(adnotations):
-            print("Q = (" + str(x2) + ", " + str(y2) + ") is on eliptic curve")
+            print("Q = (" + str(x2) + ", " + str(y2) + ") is on elliptic curve")
     else:
-        print("!!! Q = (" + str(x2) + ", " + str(y2) + ") isn't on eliptic curve")
+        print("!!! Q = (" + str(x2) + ", " + str(y2) + ") isn't on elliptic curve")
 
     if(x1!=x2 and y1!=y2):
         _lambda=((y2-y1)*modinv((x2-x1),p))%p
