@@ -34,7 +34,7 @@ def delta_of_elliptic_curve(A:int,B:int,p:int):
 
 #czy rownanie jest krzywa eliptyczna
 def is_elliptic_curve(A:int,B:int,p:int):
-    summary=delta_of_ecliptic_curve(A,B,p)
+    summary=delta_of_elliptic_curve(A,B,p)
     print("[4 * (" + str(A) + "^3) + 27 * (" + str(B) + "^2)] mod " + str(p) + " = " + str(summary))
     if(summary==0):
         return False
