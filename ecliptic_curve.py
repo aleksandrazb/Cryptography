@@ -75,7 +75,7 @@ def add_points_on_elliptic_curve(x1:int,y1:int,x2:int,y2:int,A:int,B:int,p:int,a
     if(x1!=x2 and y1!=y2):
         _lambda=((y2-y1)*modinv((x2-x1),p))%p
         if(adnotations):
-            print("lambda = [(" + str(y2) + " - " + str(y1) + ") * (" + str(x2) + " - " + str(x1) + "^(-1))] mod " + str(p) + " = " + str(_lambda))
+            print("lambda = [(" + str(y2) + " - " + str(y1) + ") * (" + str(x2) + " - " + str(x1) + ")^(-1)  )] mod " + str(p) + " = " + str(_lambda))
         x=((_lambda**2)-x1-x2)%p
         if(adnotations):
             print("x = [ " + str(_lambda) + "^2 - " + str(x1) + " - " + str(x2) + " ] mod " + str(p) + " = " + str(x))
@@ -88,7 +88,7 @@ def add_points_on_elliptic_curve(x1:int,y1:int,x2:int,y2:int,A:int,B:int,p:int,a
     if(x1==x2 and y1==y2):
         _lambda=((3*(x1**2)+A)*modinv((2*y1),p))%p
         if(adnotations):
-            print("lambda = [(3 * " + str(x1) + "^2 + " + str(A) + ") * (2 * " + str(y1)+ "^(-1))] mod " + str(p) + " = " + str(_lambda))
+            print("lambda = [(3 * " + str(x1) + "^2 + " + str(A) + ") * (2 * " + str(y1)+ ")^(-1))] mod " + str(p) + " = " + str(_lambda))
         x=((_lambda**2)-2*x1)%p
         if(adnotations):
             print("x = [ " + str(_lambda) + "^2 - 2 * " + str(x1)  + " ] mod " + str(p) + " = " + str(x))
