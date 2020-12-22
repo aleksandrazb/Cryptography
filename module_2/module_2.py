@@ -66,18 +66,19 @@ def random_elliptic_curve(p:int,adnotations=False):
 
 #2 znajdz losowy punkt na krzywej eliptycznej
 def find_point_on_elliptic_curve(A:int,B:int,p:int,adnotations=False):
-    i=random.randint(0,p-1)
-    fx=elliptic_curve(i,A,B,p)
-    if(adnotations):
-        print("y^2 = [(" + str(i) + "^3) + " + str(A) + " * " + str(i) + " + " + str(B) + "] mod " + str(p) + " = " + str(fx) + "\n")
-        print("P(" + str(i) + "," + str(math.sqrt(fx)) + ")")
-    _is=is_this_point_on_elliptic_curve(i,math.sqrt(fx),A,B,p,adnotations)
-    if(_is==True):
+    while(True):
+        i=random.randint(0,p-1)
+        fx=elliptic_curve(i,A,B,p)
         if(adnotations):
-            print("This point is on elliptic curve")
-        return i,math.sqrt(fx)
-    elif(adnotations):
-        print("This point isn't on elliptic curve")
+            print("y^2 = [(" + str(i) + "^3) + " + str(A) + " * " + str(i) + " + " + str(B) + "] mod " + str(p) + " = " + str(fx) + "\n")
+            print("P(" + str(i) + "," + str(math.sqrt(fx)) + ")")
+        _is=is_this_point_on_elliptic_curve(i,math.sqrt(fx),A,B,p,adnotations)
+        if(_is==True):
+            if(adnotations):
+                print("This point is on elliptic curve")
+            return i,math.sqrt(fx)
+        elif(adnotations):
+            print("This point isn't on elliptic curve")
         
     
 
