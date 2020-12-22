@@ -89,7 +89,7 @@ def is_this_point_on_elliptic_curve(x:int,y:int,A:int,B:int,p:int,adnotations=Fa
     fx=elliptic_curve(x,A,B,p)
     if(adnotations):
         print("y^2 = [(" + str(x) + "^3) + " + str(A) + " * " + str(x) + " + " + str(B) + "] mod " + str(p) + " = " + str(fx) + "\n")
-    if(fx-y**2==0):
+    if(fx-(y**2)%p==0):
         return True
     else:
         return False
