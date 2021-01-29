@@ -23,7 +23,7 @@ UWAGA: Implementację powyższych funkcji wykonaj na bitach!
 INT_BITS = 32
 
 
-def left_rotate(n, d) -> int:
+def left_rotate(n: int, d: int) -> int:
     # In n<<d, last d bits are 0.
     # To put first 3 bits of n at
     # last, do bitwise or of n<<d
@@ -65,21 +65,29 @@ def bytes_xor(a, b) -> bytes:
     return bytes(x ^ y for x, y in zip(a, b))
 
 
-def hex_to_int(str_: str) -> hex:
+def hex_to_int(str_: str) -> int:
     return int(str_, 16)
+
+
+def int_to_hex(int_: int) -> hex:
+    return '{:x}'.format(int_)
+    # return hex(int_)
 
 
 # =========================================================
 def add(xy: str, uw: str) -> hex:
+    # CORRECT
     return bytes_xor(hex_to_bytes(xy), hex_to_bytes(uw)).hex()
 
 
 def x_time(xy: hex) -> hex:
-    a = int_to_bytes(left_shift(hex(xy), 1))
-    return bytes_xor(a, hex_to_bytes('1B')).hex()
+    # PARTIALLY CORRECT - WRONG RESULTS ON LEFT_SHIFT
+    return int_to_hex(left_rotate(hex_to_int(xy), 1))
+    # return bytes_xor(a, hex_to_bytes('1B')).hex()
 
 
 def multiply(xy: str, uw: str) -> hex:
+    # PENDING
     print(hex_to_int(xy), hex_to_int(uw))
     a = left_rotate(hex_to_int(xy), hex_to_int(uw))
     print(a)
@@ -88,6 +96,7 @@ def multiply(xy: str, uw: str) -> hex:
 
 
 def inverse(xy, uw):
+    # PENDING
     pass
 
 
@@ -100,3 +109,9 @@ if __name__ == '__main__':
     # xtime test:
     print(x_time('57'))
     # expected result: 'ae'
+    print(x_time('ae'))
+    # expected result: '47'
+    print(x_time('47'))
+    # expected result: '8e'
+    print(x_time('8e'))
+    # expected result: '07'
