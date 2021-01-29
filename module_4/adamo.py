@@ -75,7 +75,7 @@ def int_to_hex(int_: int) -> hex:
 
 
 # =========================================================
-def add(xy: str, uw: str) -> hex:
+def add(xy: hex, uw: hex) -> hex:
     # CORRECT
     return bytes_xor(hex_to_bytes(xy), hex_to_bytes(uw)).hex()
 
@@ -86,27 +86,33 @@ def x_time(xy: hex) -> hex:
     # return bytes_xor(a, hex_to_bytes('1B')).hex()
 
 
-def multiply(xy: str, uw: str) -> hex:
+def multiply(xy: hex, uw: hex) -> hex:
     # PENDING
-    print(hex_to_int(xy), hex_to_int(uw))
-    a = left_rotate(hex_to_int(xy), hex_to_int(uw))
-    print(a)
-    a = int_to_bytes(a)
-    return bytes_to_hex(a)
+    # IMPLEMENT EUCLIDE ALGORITHM FROM PREVIOUS LECTURE
+    return int_to_hex(left_rotate(hex_to_int(xy), hex_to_int(uw)))
 
 
-def inverse(xy, uw):
+def inverse(xy: hex) -> hex:
     # PENDING
+    # OPERATION DECLARED IN EXCERCISE TEXT
+    return multiply('1', xy)
     pass
 
 
 # =========================================================
 if __name__ == '__main__':
     # addition test
+    print("addition test: ")
     print(add('57', '83'))
     # expected: d4
 
+    # multiplication test
+    print("multiplication test: ")
+    # print(multiply('57', '83'))
+    # expected: c1
+
     # xtime test:
+    print("xtime test: ")
     print(x_time('57'))
     # expected result: 'ae'
     print(x_time('ae'))
@@ -115,3 +121,8 @@ if __name__ == '__main__':
     # expected result: '8e'
     print(x_time('8e'))
     # expected result: '07'
+
+    # inversion test
+    print("inversion test: ")
+    # print(inverse('57'))
+    # expected: c1
