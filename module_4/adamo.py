@@ -29,6 +29,15 @@ def bytes_xor(a, b) -> bytes:
     return bytes(x ^ y for x, y in zip(a, b))
 
 
+# Extended Euclidean algorithm
+def egcd(a: int, b: int) -> tuple:
+    if a == 0:
+        return b, 0, 1
+    else:
+        gcd, x, y = egcd(b % a, a)
+        return gcd, y - (b//a) * x, x
+
+
 # =========================================================
 # SUPPORT FUNCTIONS - CONVERTERS
 def bytes_to_hex(bytes_) -> hex:
@@ -148,3 +157,13 @@ if __name__ == '__main__':
     print("inversion test: ")
     # print(inverse('57'))
     # expected: c1
+
+    # extended euclidean test
+    print("extended euclidean test: ")
+    a1 = 30
+    b1 = 50
+    g1, x1, y1 = egcd(a1, b1)
+    print("gcd(%s, %s) = %s, x= %s, y = %s" % (a1, b1, g1, x1, y1))
+    # gcd(30, 50) = 10
+    # Here, x = 2
+    # y = -1 as 30 * 2 + 50 * -1 = 10
