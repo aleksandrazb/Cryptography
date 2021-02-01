@@ -91,6 +91,16 @@ def x_time(xy: hex) -> hex:
     return int_to_hex(left_rotate(hex_to_int(xy), 1))
     # return bytes_xor(a, hex_to_bytes('1B')).hex()
 
+def xtime(hexstr):
+    num = int(hexstr,16)
+    bs1 = bin(num)[2:]
+    if len(bs1)!=8:
+        bs1 = '0'*(8-len(bs1))+bs1
+    num = (num<<1)%2**8
+    if bs1[0]=='1':
+        num = num^int("1B",16)
+    return hex(num)[2:]
+
 
 '''
 3. Zaimplementuj funkcję iloczyn()
@@ -144,13 +154,17 @@ if __name__ == '__main__':
 
     # xtime test:
     print("xtime test: ")
-    print(x_time('57'))
+    #print(x_time('57'))
+    print(xtime('57'))
     # expected result: 'ae'
-    print(x_time('ae'))
+    #print(x_time('ae'))
+    print(xtime('ae'))
     # expected result: '47'
-    print(x_time('47'))
+    #print(x_time('47'))
+    print(xtime('47'))
     # expected result: '8e'
-    print(x_time('8e'))
+    #print(x_time('8e'))
+    print(xtime('8e'))
     # expected result: '07'
 
     # inversion test
