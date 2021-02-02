@@ -78,6 +78,7 @@ def add(xy: hex, uw: hex) -> hex:
     # CORRECT
     return bytes_xor(hex_to_bytes(xy), hex_to_bytes(uw)).hex()
 
+    return hex(int(''.join([str(i) for i in wynik]), 2))[2:]
 
 '''
 2. Zaimplementuj funkcję xtime()

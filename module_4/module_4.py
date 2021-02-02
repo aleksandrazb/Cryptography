@@ -100,5 +100,4 @@ if __name__ == '__main__':
     xx='53'
     print(odwrotnosc(xx))
     print(iloczyn(xx,odwrotnosc(xx)))
-    # expected: c1
 
